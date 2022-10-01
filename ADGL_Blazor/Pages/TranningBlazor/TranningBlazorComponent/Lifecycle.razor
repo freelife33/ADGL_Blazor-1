@@ -1,0 +1,95 @@
+﻿@page "/lifecycle"
+@using System.Threading
+
+<h1>OnInit & OnInitAsync Demo</h1>
+<br />
+<button class="btn btn-primary" @onclick="IncrementCount">Tıkla</button>
+<br />
+<button class="btn btn-warning" @onclick="StartCountdown">Tıkla2</button>
+<br />
+<span>Count : @Count</span>
+<br />
+<span>Ana Komponent : @currentCount</span>
+
+@*<LifecycleChildComponent currentCount="currentCount"></LifecycleChildComponent>*@
+
+@foreach (var item in EventType)
+{
+    @item <hr />
+}
+
+@code{
+    private int currentCount = 0;
+
+    private int Count = 5;
+    List<string> EventType = new List<string>();
+
+
+    // private int currentCount2 = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("OnInitialized is called");
+    }
+    protected override async Task OnInitializedAsync()
+    { 
+        EventType.Add("OnInitializedAsync is called");
+        await Task.Delay(1000);          
+    }
+
+    protected override void OnParametersSet()
+    {
+        EventType.Add("OnParameterSet is called");
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        EventType.Add("OnParametersSetAsync is called");
+        await Task.Delay(1000);         
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        // EventType.Add("OnAfterRender is called");
+        if (firstRender)
+        {
+            currentCount = 3;
+        }
+        else
+        {
+            currentCount = 5;
+        }
+    }
+
+    protected override  async Task OnAfterRenderAsync(bool firstRender)
+    {
+        EventType.Add("OnAfterRenderAsync is called");
+        await Task.Delay(1000);           
+    }
+
+    protected override bool ShouldRender()
+    {
+        EventType.Add("ShouldRender is called");
+        return true;
+    }
+
+    void StartCountdown()
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (Count <=0) return;
+            Count--;
+
+        // Note that the following line is necessary because otherwise
+        // Blazor would not recognize the state change and not refresh the UI
+        // this.StateHasChanged();
+        InvokeAsync(StateHasChanged);
+        }), null, 1000, 1000);
+    }
+}

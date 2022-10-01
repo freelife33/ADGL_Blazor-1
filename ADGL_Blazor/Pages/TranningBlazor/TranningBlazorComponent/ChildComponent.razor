@@ -1,0 +1,15 @@
+﻿
+<div>
+    <div class="alert alert-info">@Title</div>
+</div>
+
+<h4 style="@ElementStyle">Cascading Parameter Deneme Child</h4>
+<GrandChildComponent></GrandChildComponent>
+
+@code {
+    [CascadingParameter]
+    public string? ElementStyle { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+}

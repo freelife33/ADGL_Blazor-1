@@ -1,9 +1,16 @@
 ﻿@*<h3>EditDeleteButtonComponent</h3>
 *@
+
+@if (IsAdmin)
+{
+<input type="button" class="btn btn-danger" value="Sil" />
+<input type="button" class="btn btn-warning" value="Güncelle" />
+<input type="button" class="btn btn-success" value="Kaydet" />
+    
+}
+
 @code {
 
-   
+    [Parameter]
+    public bool IsAdmin { get; set; }
 }
- <input type="button" class="btn btn-danger" value="Sil"/>
-    <input type="button" class="btn btn-warning" value="Güncelle"/>
-    <input type="button" class="btn btn-success" value="Kaydet"/>
