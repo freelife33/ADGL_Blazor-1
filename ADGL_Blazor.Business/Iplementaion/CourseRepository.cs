@@ -81,7 +81,7 @@ namespace ADGL_Blazor.Business.Iplementaion
                 if (courseId==courseDto.Id)
                 {
                     var courseDetails = await _context.Courses.FindAsync(courseId);
-                    var course = _mapper.Map<CourseDto,Course>(courseDto);
+                    var course = _mapper.Map<CourseDto,Course>(courseDto,courseDetails);
                     course.UpdatedBy = "ADGL";
                     course.UpdatedDate = DateTime.Now;
                     var updateCourse = _context.Courses.Update(course);

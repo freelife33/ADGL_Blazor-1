@@ -1,0 +1,76 @@
+﻿@page "/courselist"
+
+@using ADGL_Blazor.Business.Contracts
+
+@inject ICourseRepository _courseRepository
+@inject NavigationManager _navigationManager
+
+<div class="row mt-4">
+    <div class="col-3">
+        <h5>Course List</h5>
+    </div>
+    <br />
+    <div class="col-3">
+        <NavLink href="createorupdate" class="btn btn-success">Kurs Ekle</NavLink>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Kurs Adı</th>
+                    <th scope="col">Fiyat</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Başlık</th>
+                    <th scope="col">Durumu</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (courseModelList.Any())
+                {
+                    foreach (var course in courseModelList)
+                    {
+                    <tr>
+                        <td>@course.Name</td>
+                        <td>@course.CoursePrice</td>
+                        <td>@course.Description</td>
+                        <td>@course.Title</td>
+                        
+                            @if (course.IsActive){<td>Aktif</td> }else{<td>Pasif</td>}
+                            <td><NavLink href="@($"/edit/{course.Id}")" class="btn btn-primary">Düzenle</NavLink></td>
+                        </tr>                        
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">@ErrorMessage</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+@code {
+    private IEnumerable<CourseDto> courseModelList { get; set; } = new List<CourseDto>();
+    public string? ErrorMessage { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await _courseRepository.GetAllCourse();
+        if (!data.IsSuccess)
+        {
+            ErrorMessage = data.Message;
+        }
+        else
+        {
+            courseModelList = data.Data;
+        }
+    }
+}

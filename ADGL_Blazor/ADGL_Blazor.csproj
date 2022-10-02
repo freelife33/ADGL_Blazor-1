@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ADGL_Blazor.Business\ADGL_Blazor.Business.csproj" />
     <ProjectReference Include="..\ADGL_Blazor.DataAccess\ADGL_Blazor.DataAccess.csproj" />
+    <ProjectReference Include="..\ADGL_Blazor.Models\ADGL_Blazor.Models.csproj" />
   </ItemGroup>
 
 </Project>

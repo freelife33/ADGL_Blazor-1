@@ -5,13 +5,13 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADGL_Blazor", "ADGL_Blazor\ADGL_Blazor.csproj", "{A5F9C1EA-944F-4BC7-9361-C0DECFF932E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADGL_Blazor.DataAccess", "ADGL_Blazor.DataAccess\ADGL_Blazor.DataAccess.csproj", "{E68212FE-40DF-490B-90DF-BAA1BECF1707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADGL_Blazor.DataAccess", "ADGL_Blazor.DataAccess\ADGL_Blazor.DataAccess.csproj", "{E68212FE-40DF-490B-90DF-BAA1BECF1707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADGL_Blazor.Common", "ADGL_Blazor.Common\ADGL_Blazor.Common.csproj", "{17CE2273-79FC-4C2D-B90A-E3179802F1AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADGL_Blazor.Common", "ADGL_Blazor.Common\ADGL_Blazor.Common.csproj", "{17CE2273-79FC-4C2D-B90A-E3179802F1AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADGL_Blazor.Models", "ADGL_Blazor.Models\ADGL_Blazor.Models.csproj", "{19197229-0DE8-4B7E-B7E1-7202F58CB6DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADGL_Blazor.Models", "ADGL_Blazor.Models\ADGL_Blazor.Models.csproj", "{19197229-0DE8-4B7E-B7E1-7202F58CB6DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADGL_Blazor.Business", "ADGL_Blazor.Business\ADGL_Blazor.Business.csproj", "{877019A8-DFB3-4302-9031-C06CACF06CA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADGL_Blazor.Business", "ADGL_Blazor.Business\ADGL_Blazor.Business.csproj", "{877019A8-DFB3-4302-9031-C06CACF06CA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,16 +12,16 @@ namespace ADGL_Blazor.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Kurs adını giriniz.")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Price Must be have fill")]
+        [Required(ErrorMessage = "Kurs fiyatını giriniz")]
         public decimal CoursePrice { get; set; }
 
         [Required(ErrorMessage = "Must be selected Is-Active")]
         public bool IsActive { get; set; } = true;
         public string? Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Kurs başlığını giriniz.")]
         public string? Title { get; set; }
         public string? SubTitle { get; set; }
         public double RegularRate { get; set; }
