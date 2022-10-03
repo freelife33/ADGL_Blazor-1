@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ADGL_Blazor.DataAccess.Data
 {
-    public class ADGL_BlazorContext:DbContext
+    public class ADGL_BlazorContext:IdentityDbContext
     {
         public ADGL_BlazorContext(DbContextOptions<ADGL_BlazorContext> options):base(options)
         {

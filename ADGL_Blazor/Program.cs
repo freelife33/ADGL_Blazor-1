@@ -3,6 +3,7 @@ using ADGL_Blazor.Business.Contracts;
 using ADGL_Blazor.Business.Iplementaion;
 using ADGL_Blazor.Data;
 using ADGL_Blazor.DataAccess.Data;
+using ADGL_Blazor.Service;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -25,6 +26,8 @@ builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuth
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IFileUpload, FileUpload>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

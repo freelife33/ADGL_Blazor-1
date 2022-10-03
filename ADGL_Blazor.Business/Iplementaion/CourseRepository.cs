@@ -101,9 +101,31 @@ namespace ADGL_Blazor.Business.Iplementaion
             }
         }
 
-        public Task<Result<CourseDto>> UpdateCourseImage(int courseId, string imagePath)
+        public async Task<Result<CourseDto>> UpdateCourseImage(int courseId, string imagePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (courseId >0)
+                {
+                    var courseDetails = await _context.Courses.FindAsync(courseId);
+                    courseDetails.UpdatedBy = "ADGL";
+                    courseDetails.UpdatedDate = DateTime.Now;
+                    courseDetails.ImageUrl=imagePath;
+                    var updateCourse = _context.Courses.Update(courseDetails);
+                    await _context.SaveChangesAsync();
+                    var returnData = _mapper.Map<Course, CourseDto>(updateCourse.Entity);
+                    return new Result<CourseDto>(true, ResultConstant.RecordUpdateSuccessfully, returnData);
+                }
+                else
+                {
+                    return new Result<CourseDto>(false, ResultConstant.RecordUpdateNotSuccessfully);
+                }
+            }
+            catch (Exception)
+            {
+
+                return new Result<CourseDto>(false, ResultConstant.RecordUpdateNotSuccessfully);
+            }
         }
     }
 }
